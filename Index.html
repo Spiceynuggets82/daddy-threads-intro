@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daddy Threads Intro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+    }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      border: none;
+      border-radius: 50%;
+      padding: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(145deg, #4a2c2a, #7b4a3e); /* warm mahogany tones */
+      box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(145deg, #7b4a3e, #4a2c2a);
+    }
+  </style>
+</head>
+<body>
+  <video id="introVideo" autoplay muted playsinline>
+    <source src="https://www.dropbox.com/scl/fi/g50le5slpa7myi3s7bewf/copy_41303171-34D3-465C-A0B5-946DCA35A73C-2.MOV?rlkey=iernmtvxdr34d8g6sr1xlnqj0&st=np9tm0u9&dl=1" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="controls">
+    <button id="muteBtn">Unmute</button>
+    <button id="skipBtn">Skip</button>
+  </div>
+
+  <script>
+    const video = document.getElementById('introVideo');
+    const muteBtn = document.getElementById('muteBtn');
+    const skipBtn = document.getElementById('skipBtn');
+
+    // Redirect when video ends
+    video.onended = () => {
+      window.location.href = "https://daddy-threads.printify.me/category/all/1";
+    };
+
+    // Mute/Unmute toggle
+    muteBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      muteBtn.textContent = video.muted ? "Unmute" : "Mute";
+      if (!video.muted) {
+        video.play(); // resume with sound
+      }
+    });
+
+    // Skip button
+    skipBtn.addEventListener('click', () => {
+      window.location.href = "https://daddy-threads.printify.me/category/all/1";
+    });
+  </script>
+</body>
+</html>
